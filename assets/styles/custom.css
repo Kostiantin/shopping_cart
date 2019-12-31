@@ -1,0 +1,333 @@
+/*Products*/
+.panel-heading h1 {
+    text-align: center;
+}
+.product-img {
+    width: auto;
+    height: 100%;
+    max-height: 200px;
+    margin: 0 auto;
+    display: block;
+}
+.product-holder .panel-heading {
+    text-transform: capitalize;
+    font-size: 26px;
+    color: #fff;
+}
+.description, .price, .quantity-holder, .actions-holder {
+    margin-top: 15px;
+}
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+input.quantity {
+    text-align: center;
+    font-weight: normal;
+    padding-right: 0px;
+    padding-left: 0;
+    font-size: 11px;
+}
+.btn-primary.btn-sm.addProduct {
+    background-color: #d70c4f;
+    border-color: #d70c4f;
+    position: relative;
+    top: 2px;
+}
+.fa-shopping-cart:before {
+    font-size: 30px;
+    color: #337ab7;
+}
+#menu-toggle {
+    position: relative;
+}
+.cart-quantity {
+    color: #d70c4f;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    font-size: 12px;
+    font-weight: bold;
+}
+.qnt {
+    background-color: transparent;
+}
+.qnt.hasNumber {
+    background: #d70c4f;
+    color: #fff;
+    font-size: 8px;
+    position: relative;
+    left: 5px;
+}
+#menu-toggle .fa-arrow-left {
+    color: #337ab7;
+}
+.invisible-i {
+    display:none;
+}
+
+/* Side Bar*/
+#wrapper.toggled #sidebar-wrapper {
+    border-right: 1px solid #337ab7;
+}
+#sidebar-wrapper {
+    padding: 15px;
+}
+#sidebar-wrapper h3 {
+    color: #337ab7;
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #337ab7;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+
+/*Products in cart*/
+.product-in-cart-img img {
+    max-width: 35px;
+    max-height: 40px;
+    height: auto;
+    width: auto;
+}
+.pic-row {
+    margin-bottom: 15px;
+}
+.pic-col  {
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+}
+.total-amount-for-products {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #337ab7;
+    font-size: 17px;
+    text-align: right;
+}
+.clearCart {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+.removeProduct {
+    font-size: 15px;
+    cursor: pointer;
+}
+.makeOrderForm {
+    padding-top: 15px;
+}
+.makeOrderForm label {
+    font-weight: normal;
+    color: #555;
+}
+.error {
+    color: red;
+    margin-top: 10px;
+}
+.f-hidden {
+    display: none;
+}
+
+/*navbar*/
+.user-line {
+    padding-right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+}
+.navbar-header {width: 100%;}
+
+/* order form */
+input.has-error, select.has-error {
+    border: 1px solid red;
+}
+
+/* popup for rating */
+.sp-areYouSure-main-popup-texts-container {
+    display: none;
+}
+.sp-popup-container {
+    position: fixed;
+    top: 100px;
+    width: 600px;
+    height: auto;
+    min-height: 250px;
+    padding: 25px;
+    display: none;
+    background-color: #fff;
+    z-index: 9999;
+    font-size: 16px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+    color: #364558;
+}
+.apc-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+.apc-close:before, .apc-close:after {
+    height: 12px;
+}
+.apc-close:before, .apc-close:after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 0px;
+    bottom: auto;
+    right: auto;
+    height: 16px;
+    width: 2px;
+    background: #fff;
+}
+.apc-close:before {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    background-color: #ddd;
+}
+
+.apc-close:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #ddd;
+}
+.sp-button-title {
+    cursor: pointer;
+    text-align: left;
+    padding: 20px;
+}
+.apch-image-holder {
+    margin-bottom: 30px;
+}
+.sp-areYouSure-popup-container .apch-image-holder img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: initial;
+    border-radius: 5px;
+}
+.sp-link-holder {
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.sp-link-holder a {
+    color: #364558;
+}
+.sp-link-holder a, .sp-link-holder a:hover, .apch-button:hover {
+    text-decoration: none;
+}
+.apch-button {
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.apch-button, .apch-button:hover {
+    background-color: #2C75C0;
+    color: #fff;
+}
+.apch-bottom-button-container {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+.apch-description .sp-txt-1, .apch-description .sp-txt-2, .apch-description .sp-txt-3 {
+    margin-bottom: 25px;
+}
+.sp-areYouSure-popup-container .apch-button.one {
+    margin-right: 80px;
+    background-color: transparent;
+    border: 1px solid #eee;
+    color: #000;
+}
+.sp-areYouSure-popup-container .apch-button.two {
+    background-color: rgba(44,145,55,0.76);
+    border: 1px solid rgba(44,145,55,0.76);
+}
+
+/* Rating */
+.product-rating, .popup-product-rating {
+    text-align: center;
+    margin-top: 10px;
+}
+.five-stars-container {
+    display: inline-block;
+    position: relative;
+    font-family: 'Glyphicons Halflings';
+    font-size: 17px;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.2em;
+    color: #dbdbdb;
+}
+.five-stars-container .five-stars {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    padding-left: 1px;
+}
+.five-stars-container .five-stars:before {
+    content: "\e006\e006\e006\e006\e006";
+    color: #d70c4f;
+}
+.five-stars-container:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 1px;
+    content: "\e006\e006\e006\e006\e006";
+    z-index: 0;
+}
+.sp-areYouSure-popup-container .apch-image-holder .five-stars-container {
+    font-size: 34px;
+}
+.popup-product-rating .five-stars-container {
+    cursor: default;
+}
+.sp-areYouSure-popup-container  .product-img {
+    height: 100px;
+}
+.sp-areYouSure-popup-container  .product-holder .panel-heading {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+.sp-areYouSure-popup-container .panel-primary {
+    width: 70%;
+    margin: 0 auto;
+}
+.sp-areYouSure-popup-container h3 {
+    text-align: center;
+}
+.sp-areYouSure-popup-container input {
+    width: 60%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sp-areYouSure-popup-container input[name="rating"] {
+    width: 170px;
+}
+.rating-error-message, .rating-error-cant-be-empty {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+@media (max-width: 480px) {
+    .sp-popup-container {
+        width: 100%;
+        top: 20px;
+    }
+    .sp-areYouSure-popup-container .apch-button.one {
+        margin-right: 0px;
+    }
+}
