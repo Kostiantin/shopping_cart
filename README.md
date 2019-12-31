@@ -14,4 +14,5 @@ Connection credentials should be set here: /db/db.class.php
 ### How it will look like at the end
 ![home page1](https://github.com/Kostiantin/shopping_cart/blob/master/assets/images/1.png)
 ![home page2](https://github.com/Kostiantin/shopping_cart/blob/master/assets/images/2.png)
+![home page2](https://github.com/Kostiantin/shopping_cart/blob/master/assets/images/3.png)
 
