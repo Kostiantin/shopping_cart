@@ -86,11 +86,23 @@ input.quantity {
 
 /*Products in cart*/
 .product-in-cart-img img {
-    max-width: 35px;
+    max-width: 20px;
     max-height: 40px;
     height: auto;
     width: auto;
 }
+.product-in-cart-remove {
+    padding-left: 5px;
+    padding-right: 0px;
+}
+.product-in-cart-quantity input {
+    font-size: 12px;
+    border: 1px solid #ddd;
+    width: 50px;
+    text-align: center;
+    height: 30px;
+}
+
 .pic-row {
     margin-bottom: 15px;
 }
@@ -98,6 +110,7 @@ input.quantity {
     height: 40px;
     line-height: 40px;
     font-size: 12px;
+    text-align: center;
 }
 .total-amount-for-products {
     padding-top: 10px;
@@ -105,6 +118,7 @@ input.quantity {
     border-top: 1px solid #337ab7;
     font-size: 17px;
     text-align: right;
+    font-weight: bold;
 }
 .clearCart {
     position: absolute;
@@ -317,10 +331,13 @@ input.has-error, select.has-error {
 .sp-areYouSure-popup-container input[name="rating"] {
     width: 170px;
 }
-.rating-error-message, .rating-error-cant-be-empty {
+.rating-error-message, .rating-error-cant-be-empty,.error-cart-amount-exceeds-deposit {
     color: red;
     font-size: 14px;
     display: none;
+}
+.error-cart-amount-exceeds-deposit {
+    margin-bottom: 10px;
 }
 @media (max-width: 480px) {
     .sp-popup-container {

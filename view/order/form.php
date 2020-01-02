@@ -32,12 +32,13 @@
         <div class="col-sm-12">
             <label for="delivery">Delivery</label>
             <select class="form-control" required id="delivery" name="delivery">
-                <option value="0">Select</option>
-                <option value="1">Pick Up, costs $0</option>
-                <option value="2">UPS, costs $5</option>
+                <option data-cost="0" value="0">Select</option>
+                <option data-cost="0" value="1">Pick Up, costs $0</option>
+                <option data-cost="5" value="2">UPS, costs $5</option>
             </select>
             <div class="error error-delivery f-hidden">Delivery is required</div>
         </div>
     </div>
+    <div class="error-cart-amount-exceeds-deposit">Not enough money on deposit</div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

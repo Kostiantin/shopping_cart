@@ -71,8 +71,17 @@ class CartController extends BaseController {
 
                     $cart = $ShoppingCartSession->GetShoppingCart();
 
+
                     if (!empty($cart->products[$id])) {
-                        $cart->products[$id] += $quantity;
+                        if ($_POST['shouldReplaceNumberInCart'] == 1) {
+
+                            $cart->products[$id] = $quantity;
+                        }
+                        else {
+
+                            $cart->products[$id] += $quantity;
+                        }
+
                     }
                     else {
                         $cart->products[$id] = $quantity;

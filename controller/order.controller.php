@@ -1,6 +1,11 @@
 <?php
 class OrderController extends BaseController {
-    
+
+    public $aDeliveries = [
+        1 => 0,
+        2 => 5
+    ];
+
     public function __construct (){}
     
     public function index () {
@@ -24,6 +29,12 @@ class OrderController extends BaseController {
     public function makeOrder () {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $deliveryCost = 0;
+
+            if (!empty($_POST['delivery']) && in_array($_POST['delivery'], array_keys($this->aDeliveries))) {
+
+                $deliveryCost = $this->aDeliveries[$_POST['delivery']];
+            }
 
             $userDataValid = $this->validateUserData($_POST);
 
@@ -83,8 +94,10 @@ class OrderController extends BaseController {
                     $userShopSession = new ShoppingCartSession();
                     $userData = $userShopSession->GetUserData();
 
-                    $deposit = number_format($userData['deposit'] - $total_amount,2);
-                    $userShopSession->StoreUserDepositAmountInSession($deposit);
+                    if ($userData['deposit'] > ($total_amount + $deliveryCost)) {
+                        $deposit = number_format($userData['deposit'] - $total_amount - $deliveryCost,2);
+                        $userShopSession->StoreUserDepositAmountInSession($deposit);
+                    }
 
                     // later can add email sending here
 

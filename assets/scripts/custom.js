@@ -94,7 +94,7 @@ function refreshCart(orderData = null) {
                     _products_html += '<div class="row pic-row">';
                     _products_html += '<div class="col-md-2 pic-col product-in-cart-img"><img src="'+data['products'][product_id]['img']+'" alt=""/></div>';
                     _products_html += '<div class="col-md-2 pic-col product-in-cart-name"><strong>'+data['products'][product_id]['name']+'</strong></div>';
-                    _products_html += '<div class="col-md-2 pic-col product-in-cart-quantity"><span>'+data['products'][product_id]['quantity']+'</span></div>';
+                    _products_html += '<div class="col-md-3 pic-col product-in-cart-quantity"><input min="0" max="1000" type="number" value="'+data['products'][product_id]['quantity']+'" name="cart_pr_quantity" id="cart_pr_quantity_'+product_id+'"/></div>';
                     _products_html += '<div class="col-md-2 pic-col product-in-cart-price"><span>$'+data['products'][product_id]['price']+'</span></div>';
                     _products_html += '<div class="col-md-2 pic-col product-in-cart-amount"><strong>$'+data['products'][product_id]['amount']+'</strong></div>';
                     _products_html += '<div class="col-md-1 pic-col product-in-cart-remove"><i class="fa fa-times removeProduct" id="removeProduct_'+product_id+'" aria-hidden="true"></i></div>';
@@ -154,21 +154,12 @@ function refreshCart(orderData = null) {
 // do refresh of cart on page load one time
 refreshCart();
 
-/* Add product to cart*/
-$('.addProduct').click(function() {
-
-    var product_id = $(this).data('product_id');
-
-    var _quantity = parseInt($(this).parents('.product-holder:first').find('input.quantity').val());
-
-    var _products_in_cart = parseInt($('.cart-quantity input').val());
-    //console.log(product_id);
-
+function addProductAjax(product_id, _quantity, _products_in_cart, _shouldReplaceNumberInCart) {
     /*Buy ajax*/
     $.ajax({
         url: '/?c=cart&a=addProductToCart',
         type: 'POST',
-        data: {id: product_id, quantity: _quantity},
+        data: {id: product_id, quantity: _quantity, shouldReplaceNumberInCart: _shouldReplaceNumberInCart},
         success: function (data) {
 
             /* Refresh Cart Data*/
@@ -192,6 +183,19 @@ $('.addProduct').click(function() {
         },
         dataType: 'json'
     });
+}
+
+/* Add product to cart*/
+$('.addProduct').click(function() {
+
+    var product_id = $(this).data('product_id');
+
+    var _quantity = parseInt($(this).parents('.product-holder:first').find('input.quantity').val());
+
+    var _products_in_cart = parseInt($('.cart-quantity input').val());
+
+    addProductAjax(product_id, _quantity, _products_in_cart, 0);
+
 });
 
 // Clear Cart
@@ -233,6 +237,17 @@ $(document).on('click', '.removeProduct', function() {
 // Do order
 $(document).on('submit', '.makeOrderForm',function(e) {
     e.preventDefault();
+
+    var _tamfp_val = parseFloat($('.tamfp').text());
+    var _deposit_val = parseFloat($('.user-deposit-amount').text());
+
+    if (_tamfp_val > _deposit_val) {
+        $('.error-cart-amount-exceeds-deposit').show();
+        return;
+    }
+    else {
+        $('.error-cart-amount-exceeds-deposit').hide();
+    }
 
     $('.makeOrderForm .form-control').blur();
 
@@ -366,7 +381,45 @@ $(document).on('click', '.saveRating', function() {
 });
 
 
+// Change amount of products in cart
+$(document).on('blur', '.product-in-cart-quantity input[name="cart_pr_quantity"]', function() {
 
+    var product_id = $(this).attr('id').replace('cart_pr_quantity_', '');
+
+    var _quantity = parseInt($(this).val());
+
+    //var _products_in_cart = parseInt($('.cart-quantity input').val());
+
+    addProductAjax(product_id, _quantity, 0, 1);
+
+    refreshCart();
+});
+
+// Add delivery to total
+
+$(document).on('change', '#delivery', function(e) {
+
+    var _delivery_cost = $(this).find('option[value="'+$(this).val()+'"]').data('cost');
+
+    if (parseInt(_delivery_cost) == 0) {
+        if ($('.tamfp').hasClass('deliveryAddedPay')) {
+            var _tamfp_val = parseFloat($('.tamfp').text());
+            _tamfp_val = _tamfp_val -5;
+            $('.tamfp').text(_tamfp_val.toFixed(2));
+
+            $('.tamfp').removeClass('deliveryAddedPay');
+        }
+    }
+    if (parseInt(_delivery_cost) == 5) {
+
+        var _tamfp_val = parseFloat($('.tamfp').text());
+        _tamfp_val = _tamfp_val +5;
+        $('.tamfp').text(_tamfp_val.toFixed(2));
+
+        $('.tamfp').addClass('deliveryAddedPay');
+    }
+
+});
 
 
 
