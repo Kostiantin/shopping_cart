@@ -102,7 +102,7 @@ class OrderController extends BaseController {
                     // later can add email sending here
 
                     // return order to js
-                    echo json_encode(['success' => true,'total_amount'=>$total_amount, 'first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name'], 'deposit' => $deposit]);
+                    echo json_encode(['success' => true,'total_amount'=>number_format($total_amount+$deliveryCost, 2), 'first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name'], 'deposit' => $deposit]);
                     exit;
 
                 }

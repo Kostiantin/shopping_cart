@@ -63,7 +63,8 @@ class CartController extends BaseController {
             $product = (new Product())->GetProductById($id);
             $cart = null;
             $success = false;
-            if (!empty($product) && !empty($quantity)) {
+
+            if (!empty($product) && isset($quantity) && $quantity >= 0) {
 
                 $ShoppingCartSession = new ShoppingCartSession();
 
@@ -71,20 +72,25 @@ class CartController extends BaseController {
 
                     $cart = $ShoppingCartSession->GetShoppingCart();
 
-
                     if (!empty($cart->products[$id])) {
-                        if ($_POST['shouldReplaceNumberInCart'] == 1) {
 
-                            $cart->products[$id] = $quantity;
+                        if ($quantity == 0) {
+                            unset($cart->products[$id]);
                         }
                         else {
-
-                            $cart->products[$id] += $quantity;
+                            if ($_POST['shouldReplaceNumberInCart'] == 1) {
+                                $cart->products[$id] = $quantity;
+                            }
+                            else {
+                                $cart->products[$id] += $quantity;
+                            }
                         }
-
                     }
                     else {
-                        $cart->products[$id] = $quantity;
+                        if ($quantity > 0) {
+                            $cart->products[$id] = $quantity;
+                        }
+
                     }
 
                 } else {

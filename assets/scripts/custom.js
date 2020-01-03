@@ -88,6 +88,7 @@ function refreshCart(orderData = null) {
 
         if (typeof data != 'undefined') {
             if (typeof data.products != 'undefined') {
+                $('.tamfp').removeClass('deliveryAddedPay');
                 var _products_html = '<div class="products-in-cart">';
                 for (var product_id in data['products']) {
 
@@ -382,7 +383,7 @@ $(document).on('click', '.saveRating', function() {
 
 
 // Change amount of products in cart
-$(document).on('blur', '.product-in-cart-quantity input[name="cart_pr_quantity"]', function() {
+$(document).on('change', '.product-in-cart-quantity input[name="cart_pr_quantity"]', function() {
 
     var product_id = $(this).attr('id').replace('cart_pr_quantity_', '');
 
